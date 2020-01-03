@@ -11,6 +11,8 @@ class StepThree extends Component {
             mortgage: store.getState().mortgage,
             rent: store.getState().rent
         }
+
+        this.back = this.back.bind(this)
     }
 
     componentDidMount() {
@@ -41,7 +43,7 @@ class StepThree extends Component {
             .catch(err => alert(err.response.request.response))
     }
 
-    back = () => {
+    back() {
         let payload = {...this.state}
         store.dispatch({
             type: STEP_THREE,
