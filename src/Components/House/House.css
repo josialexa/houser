@@ -1,0 +1,35 @@
+.house {
+    background-color: #dedede;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin: 15px;
+    padding: 10px;
+    height: 20%;
+    width: 98%;
+}
+
+.house-image-container {
+    height: 175px;
+    width: 300px;
+}
+
+.house-image {
+    height: 100%;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.column div {
+    margin-bottom: 20px;
+}
+
+.delete-house {
+    background-color: inherit;
+    border: none;
+    font-size: 15px;
+}

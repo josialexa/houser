@@ -1,0 +1,38 @@
+.dashboard {
+    padding: 20px;
+    margin-top: 3%;
+    height: 90%;
+    background-color: #e5f4ec;
+    width: 45%;
+}
+
+.dashboard-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 40px;
+    width: 100%;
+    height: 10%;
+}
+
+.dashboard-add-button {
+    background-color: #8aea92;
+    border: none;
+    font-size: 20px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.house-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.indent {
+    padding-left: 40px;
+}

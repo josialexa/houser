@@ -2,6 +2,7 @@ import React from 'react';
 import {HashRouter as Router} from 'react-router-dom'
 import routes from './routes'
 import Header from './Components/Header/Header'
+import './reset.css'
 import './App.css';
 
 function App() {

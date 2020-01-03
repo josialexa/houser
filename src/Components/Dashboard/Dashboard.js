@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import House from '../House/House'
 import axios from 'axios'
+import './Dashboard.css'
 
 export default class Dashboard extends Component {
     constructor() {
@@ -29,11 +30,15 @@ export default class Dashboard extends Component {
     render() {
         return (
             <div className='dashboard'>
-                <h1>Dashboard</h1>
-                <Link to='/wizard/step1'><button>Add New Property</button></Link>
+                <div className='dashboard-menu'>
+                    <h1>Dashboard</h1>
+                    <Link to='/wizard/step1'><button className='dashboard-add-button'>Add New Property</button></Link>
+                </div>
                 <hr />
-                <span className='bold'>Home Listings</span>
-                {this.state.houses.map(v => <House key={v.id} house={v} delete={this.delete} />)}
+                <span className='indent bold'>Home Listings</span>
+                <div className='house-display'>
+                    {this.state.houses.map(v => <House key={v.id} house={v} delete={this.delete} />)}
+                </div>
             </div>
         )
     }
