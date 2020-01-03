@@ -53,29 +53,33 @@ class StepOne extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <span>Property Name</span>
-                    <input onChange={e => this.handleChange(e, 'name')} value={this.state.name}></input>
+            <div className='step'>
+                <div className='inputs'>
+                    <div className='input-container'>
+                        <span>Property Name</span>
+                        <input className='input name' onChange={e => this.handleChange(e, 'name')} value={this.state.name}></input>
+                    </div>
+                    <div className='input-container'>
+                        <span>Address</span>
+                        <input className='input address-image-money' onChange={e => this.handleChange(e, 'address')} value={this.state.address}></input>
+                    </div>
+                    <div className='city-state-zip'>
+                        <div className='input-container'>
+                            <span>City</span>
+                            <input className='input city' onChange={e => this.handleChange(e, 'city')} value={this.state.city}></input>
+                        </div>
+                        <div className='input-container'>
+                            <span>State</span>
+                            <input className='input state' onChange={e => this.handleChange(e, 'state')} value={this.state.state}></input>
+                        </div>
+                        <div className='input-container'>
+                            <span>Zip</span>
+                            <input className='input zip' onChange={e => this.handleChange(e, 'zip')} value={this.state.zip}></input>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <span>Address</span>
-                    <input onChange={e => this.handleChange(e, 'address')} value={this.state.address}></input>
-                </div>
-                <div>
-                    <span>City</span>
-                    <input onChange={e => this.handleChange(e, 'city')} value={this.state.city}></input>
-                </div>
-                <div>
-                    <span>State</span>
-                    <input onChange={e => this.handleChange(e, 'state')} value={this.state.state}></input>
-                </div>
-                <div>
-                    <span>Zip</span>
-                    <input onChange={e => this.handleChange(e, 'zip')} value={this.state.zip}></input>
-                </div>
-                <div>
-                    <button onClick={this.next}>Next</button>
+                <div className='one-button-container'>
+                    <button onClick={this.next} className='form-nav'>Next</button>
                 </div>
             </div>
         )

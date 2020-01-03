@@ -5,6 +5,7 @@ import StepOne from './StepOne'
 import StepTwo from './StepTwo'
 import StepThree from './StepThree'
 import store, {CLEAR} from '../../store'
+import './Wizard.css'
 
 class Wizard extends Component {
     constructor() {
@@ -30,12 +31,12 @@ class Wizard extends Component {
 
     render() {
         return (
-            <div>
-                <div>
+            <div className='wizard'>
+                <div className='form-menu'>
                     <span>Add New Listing</span>
-                    <Link to='/'><button onClick={this.clear}>Cancel</button></Link>
+                    <Link to='/'><button onClick={this.clear} className='wizard-cancel-button'>Cancel</button></Link>
                 </div>
-                <div>
+                <div className='step-container'>
                     <Route path='/wizard/step1' component={StepOne} />
                     <Route path='/wizard/step2' component={StepTwo} />
                     <Route path='/wizard/step3' component={StepThree} />

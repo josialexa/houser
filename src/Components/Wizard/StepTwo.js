@@ -43,14 +43,14 @@ class StepTwo extends Component {
 
     render() {
         return (
-            <div>
-                <div>
+            <div className='step-2'>
+                <div className='input-container'>
                     <span>Image URL</span>
-                    <input onChange={e => this.handleChange(e)} value={this.state.img}></input>
+                    <input className='input address-image-money' onChange={e => this.handleChange(e)} value={this.state.img}></input>
                 </div>
-                <div>
-                    <button onClick={this.back}>Back</button>
-                    <button onClick={this.next}>Next</button>
+                <div className='two-button-container'>
+                    <button className='form-nav' onClick={this.back}>Back</button>
+                    <button className='form-nav' onClick={this.next}>Next</button>
                 </div>
             </div>
         )

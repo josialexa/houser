@@ -53,21 +53,23 @@ class StepThree extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <span>Recommended Rent: $</span><span>{this.state.mortgage * 1.25}</span>
+            <div className='step-3'>
+                <div class='inputs'>
+                    <div className=''>
+                        <span>Recommended Rent: $</span><span>{this.state.mortgage * 1.25}</span>
+                    </div>
+                    <div className='input-container'>
+                        <span>Monthly Mortgage Amount</span>
+                        <input className='address-image-money' onChange={e => this.handChange(e, 'mortgage')} value={this.state.mortgage}></input>
+                    </div>
+                    <div className='input-container'>
+                        <span>Desired Monthly Rent</span>
+                        <input className='address-image-money' onChange={e => this.handChange(e, 'rent')} value={this.state.rent}></input>
+                    </div>
                 </div>
-                <div>
-                    <span>Monthly Mortgage Amount</span>
-                    <input onChange={e => this.handChange(e, 'mortgage')} value={this.state.mortgage}></input>
-                </div>
-                <div>
-                    <span>Desired Monthly Rent</span>
-                    <input onChange={e => this.handChange(e, 'rent')} value={this.state.rent}></input>
-                </div>
-                <div>
-                    <button onClick={this.back}>Back</button>
-                    <button onClick={this.post}>Complete</button>
+                <div className='two-button-container'>
+                    <button className='form-nav' onClick={this.back}>Back</button>
+                    <button className='form-nav complete' onClick={this.post}>Complete</button>
                 </div>
             </div>
         )
