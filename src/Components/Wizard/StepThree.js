@@ -1,15 +1,23 @@
 import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
 import axios from 'axios'
+import store, {STEP_THREE, CLEAR} from '../../store'
 
 class StepThree extends Component {
     constructor() {
         super()
 
         this.state = {
-            mortgage: 0,
-            rent: 0
+            mortgage: store.getState().mortgage,
+            rent: store.getState().rent
         }
+    }
+
+    componentDidMount() {
+        store.subscribe(() => this.setState({
+            mortgage: store.getState().mortgage,
+            rent: store.getState().rent
+        }))
     }
 
     handChange = (e, tar) => {
@@ -20,13 +28,26 @@ class StepThree extends Component {
     }
 
     post = () => {
-        const {name, address, city, state, zip} = this.state
-        axios.post('/api/houses', {name, address, city, state, zip})
-            .then(res => this.props.history.push('/'))
+        console.log('click')
+        const {name, address, city, state, zip, img} = store.getState()
+        const {mortgage, rent} = this.state
+        axios.post('/api/houses', {name, address, city, state, zip, img, mortgage, rent})
+            .then(res => {
+                store.dispatch({
+                    type: CLEAR
+                })
+                this.props.history.push('/')
+            })
             .catch(err => alert(err.response.request.response))
     }
 
     back = () => {
+        let payload = {...this.state}
+        store.dispatch({
+            type: STEP_THREE,
+            payload: payload
+        })
+
         this.props.history.push('/wizard/step2')
     }
 
@@ -38,7 +59,7 @@ class StepThree extends Component {
                 </div>
                 <div>
                     <span>Monthly Mortgage Amount</span>
-                    <input onChange={e => this.handChange(e, 'mortgage')} value={this.state.rent}></input>
+                    <input onChange={e => this.handChange(e, 'mortgage')} value={this.state.mortgage}></input>
                 </div>
                 <div>
                     <span>Desired Monthly Rent</span>
@@ -46,7 +67,7 @@ class StepThree extends Component {
                 </div>
                 <div>
                     <button onClick={this.back}>Back</button>
-                    <button onClick={this.props.post}>Complete</button>
+                    <button onClick={this.post}>Complete</button>
                 </div>
             </div>
         )

@@ -1,20 +1,36 @@
 import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
+import store, {STEP_ONE} from '../../store'
 
 class StepOne extends Component {
     constructor() {
         super()
 
+        this.reduxState = store.getState()
+
         this.state = {
-            name: '',
-            address: '',
-            city: '',
-            state: '',
-            zip: '',
-            img: '',
-            mortgage: 0,
-            rent: 0
+            name: this.reduxState.name,
+            address: this.reduxState.address,
+            city: this.reduxState.city,
+            state: this.reduxState.state,
+            zip: this.reduxState.zip
+            // img: this.reduxState.img,
+            // mortgage: this.reduxState.mortgage,
+            // rent: this.reduxState.rent
         }
+    }
+
+    componentDidMount() {
+        store.subscribe(() => this.setState({
+            name: this.reduxState.name,
+            address: this.reduxState.address,
+            city: this.reduxState.city,
+            state: this.reduxState.state,
+            zip: this.reduxState.zip
+            // img: this.reduxState.img,
+            // mortgage: this.reduxState.mortgage,
+            // rent: this.reduxState.rent
+        }))
     }
 
     handleChange = (e, tar) => {
@@ -25,6 +41,13 @@ class StepOne extends Component {
     }
 
     next = () => {
+        let payload = {...this.state}
+        // const {name, address, city, state, zip} = this.state
+        store.dispatch({
+            type: STEP_ONE,
+            payload: payload
+        })
+
         this.props.history.push('/wizard/step2')
     }
 

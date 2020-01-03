@@ -9,7 +9,7 @@ module.exports = {
         const {name, address, city, state, zip, img, mortgage, rent} = req.body
         const db = req.app.get('db')
 
-        db.add(name, address, city, state, zip, img, mortgage, rent)
+        db.add(name, address, city, state, +zip, img, +mortgage, +rent)
             .then(() => res.sendStatus(200))
             .catch(err => {
                 console.log(err)

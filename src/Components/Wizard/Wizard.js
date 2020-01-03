@@ -4,21 +4,28 @@ import axios from 'axios'
 import StepOne from './StepOne'
 import StepTwo from './StepTwo'
 import StepThree from './StepThree'
+import store, {CLEAR} from '../../store'
 
 class Wizard extends Component {
     constructor() {
         super()
 
-        this.state = {
-            name: '',
-            address: '',
-            city: '',
-            state: '',
-            zip: '',
-            img: '',
-            mortgage: 0,
-            rent: 0
-        }
+        // this.state = {
+        //     name: '',
+        //     address: '',
+        //     city: '',
+        //     state: '',
+        //     zip: '',
+        //     img: '',
+        //     mortgage: 0,
+        //     rent: 0
+        // }
+    }
+
+    clear = () => {
+        store.dispatch({
+            type: CLEAR
+        })
     }
 
     render() {
@@ -26,7 +33,7 @@ class Wizard extends Component {
             <div>
                 <div>
                     <span>Add New Listing</span>
-                    <Link to='/'><button>Cancel</button></Link>
+                    <Link to='/'><button onClick={this.clear}>Cancel</button></Link>
                 </div>
                 <div>
                     <Route path='/wizard/step1' component={StepOne} />

@@ -28,9 +28,11 @@ export default class Dashboard extends Component {
 
     render() {
         return (
-            <div>
-                Dashboard
+            <div className='dashboard'>
+                <h1>Dashboard</h1>
                 <Link to='/wizard/step1'><button>Add New Property</button></Link>
+                <hr />
+                <span className='bold'>Home Listings</span>
                 {this.state.houses.map(v => <House key={v.id} house={v} delete={this.delete} />)}
             </div>
         )
